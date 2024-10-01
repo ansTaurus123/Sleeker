@@ -1,3 +1,4 @@
+import streamlit as st
 import mediapy as media
 import random
 import sys
