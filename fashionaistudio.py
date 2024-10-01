@@ -15,7 +15,12 @@ pipe = AutoPipelineForText2Image.from_pretrained(
     use_safetensors=True,
     variant="fp16",
     )
-pipe = pipe.to("cuda")
+
+# Check if the device is available
+if torch.cuda.is_available():
+    pipe = pipe.to("cuda")
+else:
+    pipe = pipe.to("cpu")
 
 # Ask the user for information
 topwear = st.text_input("Enter the type of upper garment you want (for example, shirt, blouse, jacket): ")
